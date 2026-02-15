@@ -1,8 +1,14 @@
-import Link from "next/link"
+"use client"
+
+import { useState } from "react"
 import { creators } from "@/lib/data"
+import { WalletModal } from "./wallet-modal"
 
 export function Hero() {
+  const [walletOpen, setWalletOpen] = useState(false)
+
   return (
+    <>
     <section className="relative mt-[56px] flex min-h-[55vh] flex-col justify-end overflow-hidden px-4 pb-16 pt-16 lg:px-8">
       {/* Background image with dark overlay */}
       <div className="absolute inset-0">
@@ -37,12 +43,12 @@ export function Hero() {
           className="flex flex-wrap items-center gap-5 animate-fade-in-up"
           style={{ animationDelay: "0.3s" }}
         >
-          <Link
-            href="#creators"
+          <button
+            onClick={() => setWalletOpen(true)}
             className="inline-flex items-center gap-2 rounded-full bg-brand-blue px-8 py-3 text-sm font-semibold text-white shadow-lg transition-all hover:brightness-110"
           >
             Join Now
-          </Link>
+          </button>
 
           {/* Stacked avatars */}
           <div className="flex items-center gap-3">
@@ -67,5 +73,7 @@ export function Hero() {
         </div>
       </div>
     </section>
+    <WalletModal open={walletOpen} onOpenChange={setWalletOpen} />
+    </>
   )
 }
