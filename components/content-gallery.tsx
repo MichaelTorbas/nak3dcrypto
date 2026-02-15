@@ -1,0 +1,156 @@
+"use client"
+
+import { useState } from "react"
+import { Lock, Loader2, CheckCircle2 } from "lucide-react"
+import { toast } from "sonner"
+import type { ContentItem } from "@/lib/data"
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+} from "@/components/ui/dialog"
+
+interface ContentGalleryProps {
+  content: ContentItem[]
+  creatorName: string
+}
+
+export function ContentGallery({ content, creatorName }: ContentGalleryProps) {
+  const [unlockedIds, setUnlockedIds] = useState<Set<string>>(new Set())
+  const [selectedItem, setSelectedItem] = useState<ContentItem | null>(null)
+  const [isUnlocking, setIsUnlocking] = useState(false)
+
+  const handleUnlock = async (item: ContentItem) => {
+    setIsUnlocking(true)
+
+    // Simulate 1.5s blockchain transaction
+    await new Promise((resolve) => setTimeout(resolve, 1500))
+
+    setUnlockedIds((prev) => {
+      const next = new Set(prev)
+      next.add(item.id)
+      return next
+    })
+    setIsUnlocking(false)
+    setSelectedItem(null)
+
+    toast.success("Content unlocked!", {
+      description: `You paid ${item.price} VARA to ${creatorName}`,
+      icon: <CheckCircle2 className="h-4 w-4 text-brand-blue" />,
+    })
+  }
+
+  return (
+    <>
+      <div className="grid grid-cols-2 gap-3 sm:gap-4 md:grid-cols-3">
+        {content.map((item) => {
+          const isUnlocked = unlockedIds.has(item.id)
+
+          return (
+            <button
+              key={item.id}
+              onClick={() => !isUnlocked && setSelectedItem(item)}
+              className={`group relative aspect-[4/5] overflow-hidden rounded-xl border transition-all duration-300 ${
+                isUnlocked
+                  ? "border-brand-blue/30"
+                  : "cursor-pointer border-border hover:border-brand-blue/40 hover:shadow-md"
+              }`}
+              aria-label={isUnlocked ? `View unlocked content` : `Unlock for ${item.price} VARA`}
+            >
+              <img
+                src={item.imageUrl}
+                alt="Creator content"
+                className={`h-full w-full object-cover transition-all duration-700 ${
+                  isUnlocked ? "blur-0 scale-100" : "blur-xl scale-110"
+                }`}
+                crossOrigin="anonymous"
+              />
+
+              {/* Lock overlay */}
+              {!isUnlocked && (
+                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-card/50 transition-all group-hover:bg-card/40">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-card/80 shadow-sm backdrop-blur-sm">
+                    <Lock className="h-5 w-5 text-card-foreground" />
+                  </div>
+                  <span className="rounded-full bg-brand-blue px-3 py-1 font-mono text-xs font-bold text-white shadow-sm">
+                    {item.price} VARA
+                  </span>
+                </div>
+              )}
+
+              {/* Unlocked indicator */}
+              {isUnlocked && (
+                <div className="absolute right-2 top-2">
+                  <CheckCircle2 className="h-5 w-5 text-brand-blue drop-shadow-sm" />
+                </div>
+              )}
+            </button>
+          )
+        })}
+      </div>
+
+      {/* Unlock confirmation modal */}
+      <Dialog open={!!selectedItem} onOpenChange={() => !isUnlocking && setSelectedItem(null)}>
+        <DialogContent className="border-border bg-card sm:max-w-md">
+          <DialogHeader>
+            <DialogTitle className="text-card-foreground">Unlock Content</DialogTitle>
+            <DialogDescription className="text-muted-foreground">
+              Confirm your VARA payment to unlock this exclusive content
+            </DialogDescription>
+          </DialogHeader>
+
+          {selectedItem && (
+            <div className="flex flex-col items-center gap-6 pt-2">
+              {/* Blurred preview */}
+              <div className="relative aspect-[4/5] w-full max-w-xs overflow-hidden rounded-xl">
+                <img
+                  src={selectedItem.imageUrl}
+                  alt="Content preview"
+                  className="h-full w-full object-cover blur-xl scale-110"
+                  crossOrigin="anonymous"
+                />
+                <div className="absolute inset-0 flex items-center justify-center bg-card/30">
+                  <Lock className="h-8 w-8 text-muted-foreground" />
+                </div>
+              </div>
+
+              <p className="text-center text-sm text-muted-foreground">
+                Unlock this content for{" "}
+                <span className="font-mono font-bold text-brand-blue">
+                  {selectedItem.price} VARA
+                </span>
+                ?
+              </p>
+
+              <div className="flex w-full flex-col gap-3">
+                <button
+                  onClick={() => handleUnlock(selectedItem)}
+                  disabled={isUnlocking}
+                  className="flex items-center justify-center gap-2 rounded-full bg-brand-blue px-6 py-3 text-sm font-semibold text-white shadow-sm transition-all hover:brightness-110 disabled:opacity-70"
+                >
+                  {isUnlocking ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      Processing...
+                    </>
+                  ) : (
+                    "Confirm & Pay"
+                  )}
+                </button>
+                <button
+                  onClick={() => setSelectedItem(null)}
+                  disabled={isUnlocking}
+                  className="text-sm text-muted-foreground transition-colors hover:text-card-foreground disabled:opacity-50"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+    </>
+  )
+}
