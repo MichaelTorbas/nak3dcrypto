@@ -1,0 +1,211 @@
+export interface ContentItem {
+  id: string
+  price: number
+  imageUrl: string
+}
+
+export interface Creator {
+  id: string
+  name: string
+  bio: string
+  avatar: string
+  coverImage: string
+  previewImage: string
+  subscribers: number
+  totalContent: number
+  totalEarnings: number
+  exclusiveCount: number
+  content: ContentItem[]
+}
+
+export const creators: Creator[] = [
+  {
+    id: "cyberluna",
+    name: "CyberLuna",
+    bio: "Cosplay queen & digital muse. Merging fantasy with the metaverse, one frame at a time.",
+    avatar: "https://api.dicebear.com/9.x/avataaars-neutral/svg?seed=CyberLuna&backgroundColor=ff2d78",
+    coverImage: "",
+    previewImage: "/images/model-1.png",
+    subscribers: 12400,
+    totalContent: 48,
+    totalEarnings: 156000,
+    exclusiveCount: 24,
+    content: [
+      { id: "cl-1", price: 15, imageUrl: "/images/model-preview.jpeg?v=cl1/400/500" },
+      { id: "cl-2", price: 25, imageUrl: "/images/model-preview.jpeg?v=cl2/400/500" },
+      { id: "cl-3", price: 50, imageUrl: "/images/model-preview.jpeg?v=cl3/400/500" },
+      { id: "cl-4", price: 20, imageUrl: "/images/model-preview.jpeg?v=cl4/400/500" },
+      { id: "cl-5", price: 35, imageUrl: "/images/model-preview.jpeg?v=cl5/400/500" },
+      { id: "cl-6", price: 15, imageUrl: "/images/model-preview.jpeg?v=cl6/400/500" },
+      { id: "cl-7", price: 100, imageUrl: "/images/model-preview.jpeg?v=cl7/400/500" },
+      { id: "cl-8", price: 45, imageUrl: "/images/model-preview.jpeg?v=cl8/400/500" },
+      { id: "cl-9", price: 30, imageUrl: "/images/model-preview.jpeg?v=cl9/400/500" },
+    ],
+  },
+  {
+    id: "neonvex",
+    name: "NeonVex",
+    bio: "Digital rebel pushing boundaries. Neon dreams and cyber schemes.",
+    avatar: "https://api.dicebear.com/9.x/avataaars-neutral/svg?seed=NeonVex&backgroundColor=00f0ff",
+    coverImage: "",
+    previewImage: "/images/model-2.png",
+    subscribers: 8900,
+    totalContent: 36,
+    totalEarnings: 98000,
+    exclusiveCount: 18,
+    content: [
+      { id: "nv-1", price: 10, imageUrl: "/images/model-preview.jpeg?v=nv1/400/500" },
+      { id: "nv-2", price: 20, imageUrl: "/images/model-preview.jpeg?v=nv2/400/500" },
+      { id: "nv-3", price: 35, imageUrl: "/images/model-preview.jpeg?v=nv3/400/500" },
+      { id: "nv-4", price: 50, imageUrl: "/images/model-preview.jpeg?v=nv4/400/500" },
+      { id: "nv-5", price: 15, imageUrl: "/images/model-preview.jpeg?v=nv5/400/500" },
+      { id: "nv-6", price: 25, imageUrl: "/images/model-preview.jpeg?v=nv6/400/500" },
+      { id: "nv-7", price: 75, imageUrl: "/images/model-preview.jpeg?v=nv7/400/500" },
+      { id: "nv-8", price: 40, imageUrl: "/images/model-preview.jpeg?v=nv8/400/500" },
+    ],
+  },
+  {
+    id: "pixelrose",
+    name: "PixelRose",
+    bio: "Retro-futuristic artist. Every pixel tells a story you can't look away from.",
+    avatar: "https://api.dicebear.com/9.x/avataaars-neutral/svg?seed=PixelRose&backgroundColor=b44aff",
+    coverImage: "",
+    previewImage: "/images/model-3.png",
+    subscribers: 15200,
+    totalContent: 62,
+    totalEarnings: 210000,
+    exclusiveCount: 30,
+    content: [
+      { id: "pr-1", price: 20, imageUrl: "/images/model-preview.jpeg?v=pr1/400/500" },
+      { id: "pr-2", price: 30, imageUrl: "/images/model-preview.jpeg?v=pr2/400/500" },
+      { id: "pr-3", price: 15, imageUrl: "/images/model-preview.jpeg?v=pr3/400/500" },
+      { id: "pr-4", price: 45, imageUrl: "/images/model-preview.jpeg?v=pr4/400/500" },
+      { id: "pr-5", price: 60, imageUrl: "/images/model-preview.jpeg?v=pr5/400/500" },
+      { id: "pr-6", price: 25, imageUrl: "/images/model-preview.jpeg?v=pr6/400/500" },
+      { id: "pr-7", price: 10, imageUrl: "/images/model-preview.jpeg?v=pr7/400/500" },
+      { id: "pr-8", price: 80, imageUrl: "/images/model-preview.jpeg?v=pr8/400/500" },
+      { id: "pr-9", price: 35, imageUrl: "/images/model-preview.jpeg?v=pr9/400/500" },
+      { id: "pr-10", price: 50, imageUrl: "/images/model-preview.jpeg?v=pr10/400/500" },
+    ],
+  },
+  {
+    id: "voltsiren",
+    name: "VoltSiren",
+    bio: "High voltage energy meets ethereal beauty. Electrifying your timeline daily.",
+    avatar: "https://api.dicebear.com/9.x/avataaars-neutral/svg?seed=VoltSiren&backgroundColor=ff2d78",
+    coverImage: "",
+    previewImage: "/images/model-4.png",
+    subscribers: 6700,
+    totalContent: 28,
+    totalEarnings: 72000,
+    exclusiveCount: 14,
+    content: [
+      { id: "vs-1", price: 15, imageUrl: "/images/model-preview.jpeg?v=vs1/400/500" },
+      { id: "vs-2", price: 25, imageUrl: "/images/model-preview.jpeg?v=vs2/400/500" },
+      { id: "vs-3", price: 40, imageUrl: "/images/model-preview.jpeg?v=vs3/400/500" },
+      { id: "vs-4", price: 10, imageUrl: "/images/model-preview.jpeg?v=vs4/400/500" },
+      { id: "vs-5", price: 55, imageUrl: "/images/model-preview.jpeg?v=vs5/400/500" },
+      { id: "vs-6", price: 30, imageUrl: "/images/model-preview.jpeg?v=vs6/400/500" },
+    ],
+  },
+  {
+    id: "glitchfaye",
+    name: "GlitchFaye",
+    bio: "Glitch art provocateur. Breaking the matrix one post at a time.",
+    avatar: "https://api.dicebear.com/9.x/avataaars-neutral/svg?seed=GlitchFaye&backgroundColor=00f0ff",
+    coverImage: "",
+    previewImage: "/images/photo-5.png",
+    subscribers: 11300,
+    totalContent: 44,
+    totalEarnings: 134000,
+    exclusiveCount: 22,
+    content: [
+      { id: "gf-1", price: 20, imageUrl: "/images/model-preview.jpeg?v=gf1/400/500" },
+      { id: "gf-2", price: 35, imageUrl: "/images/model-preview.jpeg?v=gf2/400/500" },
+      { id: "gf-3", price: 50, imageUrl: "/images/model-preview.jpeg?v=gf3/400/500" },
+      { id: "gf-4", price: 15, imageUrl: "/images/model-preview.jpeg?v=gf4/400/500" },
+      { id: "gf-5", price: 70, imageUrl: "/images/model-preview.jpeg?v=gf5/400/500" },
+      { id: "gf-6", price: 25, imageUrl: "/images/model-preview.jpeg?v=gf6/400/500" },
+      { id: "gf-7", price: 40, imageUrl: "/images/model-preview.jpeg?v=gf7/400/500" },
+      { id: "gf-8", price: 90, imageUrl: "/images/model-preview.jpeg?v=gf8/400/500" },
+      { id: "gf-9", price: 30, imageUrl: "/images/model-preview.jpeg?v=gf9/400/500" },
+      { id: "gf-10", price: 45, imageUrl: "/images/model-preview.jpeg?v=gf10/400/500" },
+      { id: "gf-11", price: 60, imageUrl: "/images/model-preview.jpeg?v=gf11/400/500" },
+      { id: "gf-12", price: 20, imageUrl: "/images/model-preview.jpeg?v=gf12/400/500" },
+    ],
+  },
+  {
+    id: "synthwave",
+    name: "SynthWave",
+    bio: "Synthwave soul in a digital world. Aesthetic visuals & midnight vibes.",
+    avatar: "https://api.dicebear.com/9.x/avataaars-neutral/svg?seed=SynthWave&backgroundColor=b44aff",
+    coverImage: "",
+    previewImage: "/images/photo-7.png",
+    subscribers: 9800,
+    totalContent: 38,
+    totalEarnings: 115000,
+    exclusiveCount: 19,
+    content: [
+      { id: "sw-1", price: 25, imageUrl: "/images/model-preview.jpeg?v=sw1/400/500" },
+      { id: "sw-2", price: 15, imageUrl: "/images/model-preview.jpeg?v=sw2/400/500" },
+      { id: "sw-3", price: 40, imageUrl: "/images/model-preview.jpeg?v=sw3/400/500" },
+      { id: "sw-4", price: 30, imageUrl: "/images/model-preview.jpeg?v=sw4/400/500" },
+      { id: "sw-5", price: 65, imageUrl: "/images/model-preview.jpeg?v=sw5/400/500" },
+      { id: "sw-6", price: 20, imageUrl: "/images/model-preview.jpeg?v=sw6/400/500" },
+      { id: "sw-7", price: 50, imageUrl: "/images/model-preview.jpeg?v=sw7/400/500" },
+      { id: "sw-8", price: 35, imageUrl: "/images/model-preview.jpeg?v=sw8/400/500" },
+      { id: "sw-9", price: 85, imageUrl: "/images/model-preview.jpeg?v=sw9/400/500" },
+    ],
+  },
+  {
+    id: "novachain",
+    name: "NovaChain",
+    bio: "On-chain goddess. Decentralizing beauty, one block at a time.",
+    avatar: "https://api.dicebear.com/9.x/avataaars-neutral/svg?seed=NovaChain&backgroundColor=ff2d78",
+    coverImage: "",
+    previewImage: "/images/photo-9.png",
+    subscribers: 7400,
+    totalContent: 32,
+    totalEarnings: 88000,
+    exclusiveCount: 16,
+    content: [
+      { id: "nc-1", price: 10, imageUrl: "/images/model-preview.jpeg?v=nc1/400/500" },
+      { id: "nc-2", price: 30, imageUrl: "/images/model-preview.jpeg?v=nc2/400/500" },
+      { id: "nc-3", price: 20, imageUrl: "/images/model-preview.jpeg?v=nc3/400/500" },
+      { id: "nc-4", price: 45, imageUrl: "/images/model-preview.jpeg?v=nc4/400/500" },
+      { id: "nc-5", price: 15, imageUrl: "/images/model-preview.jpeg?v=nc5/400/500" },
+      { id: "nc-6", price: 60, imageUrl: "/images/model-preview.jpeg?v=nc6/400/500" },
+      { id: "nc-7", price: 25, imageUrl: "/images/model-preview.jpeg?v=nc7/400/500" },
+      { id: "nc-8", price: 100, imageUrl: "/images/model-preview.jpeg?v=nc8/400/500" },
+    ],
+  },
+  {
+    id: "zerohex",
+    name: "Zer0Hex",
+    bio: "Anonymous & untraceable. My content speaks louder than my identity.",
+    avatar: "https://api.dicebear.com/9.x/avataaars-neutral/svg?seed=Zer0Hex&backgroundColor=00f0ff",
+    coverImage: "",
+    previewImage: "/images/photo-10.png",
+    subscribers: 13600,
+    totalContent: 52,
+    totalEarnings: 178000,
+    exclusiveCount: 26,
+    content: [
+      { id: "zh-1", price: 30, imageUrl: "/images/model-preview.jpeg?v=zh1/400/500" },
+      { id: "zh-2", price: 15, imageUrl: "/images/model-preview.jpeg?v=zh2/400/500" },
+      { id: "zh-3", price: 45, imageUrl: "/images/model-preview.jpeg?v=zh3/400/500" },
+      { id: "zh-4", price: 20, imageUrl: "/images/model-preview.jpeg?v=zh4/400/500" },
+      { id: "zh-5", price: 55, imageUrl: "/images/model-preview.jpeg?v=zh5/400/500" },
+      { id: "zh-6", price: 75, imageUrl: "/images/model-preview.jpeg?v=zh6/400/500" },
+      { id: "zh-7", price: 10, imageUrl: "/images/model-preview.jpeg?v=zh7/400/500" },
+      { id: "zh-8", price: 40, imageUrl: "/images/model-preview.jpeg?v=zh8/400/500" },
+      { id: "zh-9", price: 25, imageUrl: "/images/model-preview.jpeg?v=zh9/400/500" },
+      { id: "zh-10", price: 60, imageUrl: "/images/model-preview.jpeg?v=zh10/400/500" },
+      { id: "zh-11", price: 35, imageUrl: "/images/model-preview.jpeg?v=zh11/400/500" },
+    ],
+  },
+]
+
+export function getCreatorById(id: string): Creator | undefined {
+  return creators.find((c) => c.id === id)
+}
