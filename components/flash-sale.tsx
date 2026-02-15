@@ -46,7 +46,7 @@ export function FlashSale() {
         <div className="relative overflow-hidden rounded-2xl neon-border" style={{ boxShadow: '0 0 30px rgba(120, 61, 208, 0.15), 0 0 60px rgba(74, 194, 234, 0.08)' }}>
           {/* Background image */}
           <img
-            src="/images/model-preview.jpeg"
+            src="/images/bottom-banner.png"
             alt=""
             className="h-full w-full object-cover absolute inset-0"
           />
