@@ -5,9 +5,9 @@ const followerImages = [
   { src: "/images/avatar-2.png", name: "Model 2", locked: false },
   { src: "/images/avatar-6.png", name: "Model 3", locked: true },
   { src: "/images/avatar-5.png", name: "Model 4", locked: false },
-  { src: "/images/avatar-8.png", name: "Model 5", locked: true },
+  { src: "/images/avatar-10.png", name: "Model 5", locked: true },
   { src: "/images/photo-7.png", name: "Model 6", locked: false },
-  { src: "/images/avatar-4.png", name: "Model 7", locked: true },
+  { src: "/images/avatar-11.png", name: "Model 7", locked: true },
   { src: "/images/photo-10.png", name: "Model 8", locked: false },
 ]
 
