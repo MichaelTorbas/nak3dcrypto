@@ -1,6 +1,6 @@
 # Nak3dCrypto
 
-A decentralized content platform built on Ethereum where creators monetize exclusive content and fans pay directly in ETH -- no middlemen, no limits.
+A decentralized content platform built on Ethereum utilizing vara.eth, where creators monetize exclusive content and fans pay directly in ETH -- no middlemen, no limits.
 
 ## Live Demo
 
