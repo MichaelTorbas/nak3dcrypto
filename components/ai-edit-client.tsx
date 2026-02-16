@@ -59,10 +59,18 @@ export function AIEditClient() {
     setPreviewUrl(url)
   }, [previewUrl])
 
+  // Handle drag start for images (preview and result)
+  const handleImageDragStart = useCallback((e: React.DragEvent, imageUrl: string) => {
+    e.dataTransfer.setData('text/uri-list', imageUrl)
+    e.dataTransfer.setData('text/plain', imageUrl)
+    e.dataTransfer.effectAllowed = 'copy'
+  }, [])
+
   // Handle drag events
   const handleDrag = useCallback((e: React.DragEvent) => {
     e.preventDefault()
     e.stopPropagation()
+    e.dataTransfer.dropEffect = 'copy'
   }, [])
 
   const handleDragIn = useCallback((e: React.DragEvent) => {
@@ -93,6 +101,35 @@ export function AIEditClient() {
     const files = e.dataTransfer.files
     if (files && files.length > 0) {
       handleFileSelect(files[0])
+      return
+    }
+
+    // Check for URL drops (dragging images from page)
+    const items = e.dataTransfer.items
+    if (items && items.length > 0) {
+      for (let i = 0; i < items.length; i++) {
+        const item = items[i]
+        if (item.type === 'text/uri-list' || item.type === 'text/plain') {
+          item.getAsString(async (url) => {
+            if (url.startsWith('http://') || url.startsWith('https://') || url.startsWith('blob:')) {
+              try {
+                const response = await fetch(url)
+                const blob = await response.blob()
+                // Determine file name from URL or default
+                const fileName = url.split('/').pop() || 'dropped-image'
+                const fileExtension = fileName.split('.').pop()?.toLowerCase() || 'png'
+                const mimeType = blob.type || `image/${fileExtension}`
+                const file = new File([blob], fileName, { type: mimeType })
+                handleFileSelect(file)
+              } catch (error) {
+                toast.error('Failed to load image from drag')
+                console.error('Error fetching dropped URL:', error)
+              }
+            }
+          })
+          break
+        }
+      }
     }
   }, [handleFileSelect])
 
@@ -216,6 +253,8 @@ export function AIEditClient() {
                           src={previewUrl}
                           alt="Preview"
                           className="h-full w-full object-cover"
+                          draggable="true"
+                          onDragStart={(e) => handleImageDragStart(e, previewUrl)}
                         />
                       </div>
                       <div className="flex items-center justify-center gap-2">
@@ -366,6 +405,8 @@ export function AIEditClient() {
                         src={resultImageUrl}
                         alt="AI Edited Result"
                         className="h-full w-full object-cover"
+                        draggable="true"
+                        onDragStart={(e) => handleImageDragStart(e, resultImageUrl)}
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4">
                         <p className="text-xs font-medium text-white">AI Generated Image</p>
