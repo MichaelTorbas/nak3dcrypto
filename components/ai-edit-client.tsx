@@ -252,7 +252,7 @@ export function AIEditClient() {
                         <img
                           src={previewUrl}
                           alt="Preview"
-                          className="h-full w-full object-cover"
+                          className="h-full w-full object-contain"
                           draggable="true"
                           onDragStart={(e) => handleImageDragStart(e, previewUrl)}
                         />
@@ -404,7 +404,7 @@ export function AIEditClient() {
                       <img
                         src={resultImageUrl}
                         alt="AI Edited Result"
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-contain"
                         draggable="true"
                         onDragStart={(e) => handleImageDragStart(e, resultImageUrl)}
                       />
